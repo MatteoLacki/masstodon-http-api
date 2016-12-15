@@ -1,0 +1,11 @@
+# PROD - BASE
+
+FROM node:7-alpine
+RUN npm install -g yarn;
+RUN npm install -g coffee-script;
+
+
+WORKDIR /src
+ADD package.json .
+RUN yarn
+CMD ["pwd && ls"]

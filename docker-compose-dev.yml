@@ -1,0 +1,19 @@
+version: '2'
+services:
+  # mongodb:
+  #   image: 'mongo:latest'
+  #   ports:
+  #     - '27017:27017'
+
+  api:
+    build:
+      context: .
+      dockerfile: "dockerfiles/dev"
+    # links:
+      # - mongodb
+    volumes:
+      - .:/src
+    ports:
+      - '38500:80'
+    command: /bin/bash
+    stdin_open: true
