@@ -93,8 +93,9 @@ ENV/
 .DS_Store
 node_modules
 
-coverage
+tmp/
 
+coverage
 yarn.lock
 npm-debug.log
 .cache-require-paths.json

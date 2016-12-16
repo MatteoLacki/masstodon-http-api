@@ -3,7 +3,7 @@ express = require 'express'
 
 
 app = express()
-# app.use require('cors')()
+app.use require('cors')()
 
 
 # bodyParser = require 'body-parser'
@@ -21,13 +21,18 @@ app.use require('compression')()
 # development only
 # app.use require('errorhandler')()  if "development" is app.get("env")
 
+fileActions = require './routes/files.coffee'
+
 mainRouter = express.Router()
 app.use '/api', mainRouter
+
+
 app.get '/', (req, res) ->
 	res
 		.status 200
 		.send 'MassTodon API is online!'
 
+app.post '/api/file', fileActions.save
 
 
 # Core deps
