@@ -1,7 +1,0 @@
-# PROD - Final
-
-FROM masstodon-base:latest
-ADD . .
-EXPOSE 80
-
-CMD ["coffee", "src/index.coffee"]

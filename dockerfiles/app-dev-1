@@ -1,0 +1,14 @@
+# DEV
+
+FROM masstodon-server-python
+
+# Add node
+RUN curl -sL https://deb.nodesource.com/setup_8.x | /bin/bash
+RUN apt-get install -y nodejs
+RUN node -v
+RUN npm i -g coffeescript@next
+
+
+VOLUME ["/app"]
+WORKDIR /app
+EXPOSE 80

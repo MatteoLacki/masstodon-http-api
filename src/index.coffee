@@ -1,49 +1,85 @@
-require 'cache-require-paths'
-express = require 'express'
+_ = require 'lodash'
+axios = require 'axios'
+path = require 'path'
+mkdirp = require 'mkdirp'
+fs = require 'fs-extra'
+
+gcs = require './gcs'
+firebase = require './firebase'
+massRunner = require './masstodon-worker'
+cResults = require './cloud-results'
+
+workDir = path.resolve process.cwd(), '.tmp'
+myBucket = gcs.defaultBucket
 
 
-app = express()
-app.use require('cors')()
+# Ensure dirs
+mkdirp workDir, (e) ->
+	console.log 'Ensured', workDir
 
-
-# bodyParser = require 'body-parser'
-# app.use bodyParser.urlencoded extended: false
-# app.use(bodyParser.json())
-
-# methodOverride = require('method-override')
-# app.use(methodOverride('X-HTTP-Method'))
-# app.use(methodOverride('X-HTTP-Method-Override'))
-# app.use(methodOverride('X-Method-Override'))
-
-app.use require('cookie-parser')('polygoncast')
-app.use require('compression')()
-
-# development only
-# app.use require('errorhandler')()  if "development" is app.get("env")
-
-fileActions = require './routes/files.coffee'
-
-mainRouter = express.Router()
-app.use '/api', mainRouter
-
-
-app.get '/', (req, res) ->
-	res
-		.status 200
-		.send 'MassTodon API is online!'
-
-app.post '/api/file', fileActions.save
-
-
-# Core deps
-# require './config.coffee'
-
-
-module.exports = exports = app
+# --- Runner
+jobs = firebase.database().ref 'jobs'
+files = firebase.database().ref 'files'
 
 
 
-server = app.listen 80, ->
-	host = server.address().address
-	port = server.address().port
-	console.log 'Masstodn app listening at http://%s:%s with an enviroment %s', host, port, app.get 'env'
+jobs.on 'value', (snap) ->
+	allJobs = snap.val()
+
+	_.forEach allJobs, (job, k) ->
+
+		jobDir = path.resolve workDir, 'input', k
+
+		pathConf =
+			spectr: path.resolve jobDir, 'spectr'
+			conf:   path.resolve jobDir, 'config.json'
+			out:    '-o' + path.resolve workDir, 'output', k
+
+		console.log pathConf
+
+		# cResults.upload
+
+		# Ensure folder and download input file
+		mkdirp jobDir, (e) ->
+			console.log 'job dir ensured: ', jobDir
+
+			# handle File downloads
+			_.forEach job.file, (v, k) ->
+				files.child(k).once('value').then (snap) ->
+					file = snap.val()
+
+					myBucket.file("spectro/#{job.owner}/#{file.baseName}").download destination: pathConf.spectr, (err) ->
+
+						conf = _.cloneDeep job.config
+						delete conf.user
+						delete conf.configName
+						delete conf.key
+
+						fs.outputJson(pathConf.conf, conf).then ->
+							console.log 'file saved'
+
+
+							massRunner pathConf, (err, res) ->
+								console.log 'err, res', err, res
+
+
+
+
+
+
+
+
+
+
+
+						# Handle config
+
+
+
+
+			# myBucket.getFiles (err, files) ->
+			# 	console.log 'DUPPA: ', err,  files
+
+
+			jobs.child(k).child('processed').set(true).then (e) ->
+				console.log 'UPDATED JOB'

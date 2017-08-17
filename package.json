@@ -1,37 +1,28 @@
 {
-  "name": "masstodon-api",
-  "version": "0.0.1",
-  "description": "Masstodon API for worker and gui",
+  "name": "masstodon-server",
+  "version": "0.1.2",
+  "description": "yay",
   "main": "src/index.coffee",
   "scripts": {
-    "test": "mocha"
+    "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MatteoLacki/MassTodonHTTPapi.git"
-  },
-  "keywords": [
-    "mass"
-  ],
   "author": "",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/MatteoLacki/MassTodonHTTPapi/issues"
-  },
-  "homepage": "https://github.com/MatteoLacki/MassTodonHTTPapi#readme",
+  "license": "ISC",
   "dependencies": {
-    "async": "^2.1.4",
-    "body-parser": "^1.15.2",
-    "busboy": "^0.2.13",
-    "cache-require-paths": "^0.3.0",
-    "compression": "^1.6.2",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "fs-extra": "^1.0.0",
-    "lodash": "^4.17.2",
-    "method-override": "^2.3.7",
-    "mongodb": "^2.2.16",
-    "needle": "^1.4.2"
+    "@google-cloud/storage": "^1.2.1",
+    "async": "^2.5.0",
+    "axios": "^0.16.2",
+    "call-me-maybe": "^1.0.1",
+    "es6-promisify": "^5.0.0",
+    "firebase-admin": "^5.0.0",
+    "fs-extra": "^4.0.1",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "needle": "^1.6.0",
+    "promisify-node": "^0.4.0",
+    "request-promise": "^4.2.0"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.0.0-beta4"
   }
 }
