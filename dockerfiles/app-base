@@ -4,9 +4,9 @@ FROM python:3.6.4
 # FROM python:2.7.12
 
 WORKDIR /mass_speck
-RUN git clone https://github.com/MatteoLacki/MassTodonPy.git
 RUN git clone https://MatteoLacki@bitbucket.org/MatteoLacki/masstodonnewtests.git
+RUN git clone https://github.com/MatteoLacki/MassTodonPy.git
 RUN cd MassTodonPy; git checkout devel; pip3 install -e .
-RUN cd ../masstodonnewtests/CLI
-RUN json2masstodon 
+# RUN cd masstodonnewtests/ReadingJson
+# RUN json2masstodon masstodon_input.json --plot
 # pip2 install MassTodonPy # change to  
