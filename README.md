@@ -1,5 +1,12 @@
 
 
+# Latest findings
+
+`make buildBase`
+`make compose`
+`make attach` in a new term tab
+- Inside app run `npm ci` 
+
 # How to run app in a develop mode?
 
 - Install docker first

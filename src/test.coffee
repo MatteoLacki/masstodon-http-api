@@ -12,11 +12,11 @@ job =
 
 console.log job
 
-# matteo = spawn 'masstodon', [
-# 	job.spec
-# 	job.conf
-# 	job.out
-# ]
+matteo = spawn 'masstodon', [
+	job.spec
+	job.conf
+	job.out
+]
 
 
 # matteo.stdout.on 'data', (data) ->
