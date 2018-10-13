@@ -37,7 +37,6 @@ jobs.on 'value', (snap) ->
 
 		console.log pathConf
 
-		# cResults.upload
 
 		# Ensure folder and download input file
 		mkdirp jobDir, (e) ->
@@ -61,19 +60,10 @@ jobs.on 'value', (snap) ->
 
 							massRunner pathConf, (err, res) ->
 								console.log 'err, res', err, res
-
-
-
-
-
-
-
-
-
+							console.log 'dupa'
 
 
 						# Handle config
-
 
 
 

@@ -1,5 +1,5 @@
 # DEV
 
-FROM python:2.7
+FROM python:3.6.4
 
-RUN pip2 install MassTodonPy
+#  RUN pip2 install MassTodonPy

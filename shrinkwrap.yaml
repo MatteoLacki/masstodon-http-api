@@ -1,0 +1,14 @@
+dependencies:
+  object-assign: 4.1.1
+packages:
+  /object-assign/4.1.1:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
+registry: 'https://registry.npmjs.org/'
+shrinkwrapMinorVersion: 4
+shrinkwrapVersion: 3
+specifiers:
+  object-assign: ^4.1.1
