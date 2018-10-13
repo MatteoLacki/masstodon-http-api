@@ -12,11 +12,9 @@ path = require 'path'
 
 
 module.exports = (conf, cb) ->
-	console.log 'dupsdafjsdokfjklsd', conf
-	matteo = spawn 'masstodon', [
-		conf.spectr
+	matteo = spawn 'json2masstodon', [
 		conf.conf
-		conf.out
+		'--plot'
 	]
 
 	matteo.stdout.on 'data', (data) ->

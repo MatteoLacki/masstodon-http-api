@@ -4,9 +4,6 @@ currentEnv = 'test' || 'test'
 
 conf = require "../envs/#{currentEnv}"
 
-
-
-
 gcs = storage
 	projectId: conf.gCloud.projectId
 	credentials: conf.gCloud.credentials

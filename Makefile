@@ -42,7 +42,7 @@ composeProd: ## Start app PROD containers
 	- docker-compose -f docker-compose-prod-test.yml -p $(projectName) up
 
 buildBase: ## Build base app base dev image
-	- docker build -t $(appBaseName) --no-cache -f dockerfiles/app-base .
+	- docker build -t $(appBaseName) -f dockerfiles/app-base .
 
 buildBaseFast: ## Build base app base dev image
 	- docker build -t $(appBaseName) -f dockerfiles/app-base .
