@@ -44,6 +44,9 @@ composeProd: ## Start app PROD containers
 buildBase: ## Build base app base dev image
 	- docker build -t $(appBaseName) --no-cache -f dockerfiles/app-base .
 
+buildBaseFast: ## Build base app base dev image
+	- docker build -t $(appBaseName) -f dockerfiles/app-base .
+
 buildApp: ## Build base app base dev image
 	- docker build -t $(appName) --no-cache -f dockerfiles/app-dev-1 .
 
