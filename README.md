@@ -5,7 +5,8 @@
 `make buildBase`
 `make compose`
 `make attach` in a new term tab
-- Inside app run `npm ci` 
+- Inside app run `npm ci`
+- run  `coffee src/test.coffeee`
 
 # How to run app in a develop mode?
 
