@@ -1,0 +1,30 @@
+{
+  "name": "masstodon-server",
+  "version": "0.1.2",
+  "description": "yay",
+  "main": "src/index.coffee",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^2.1.0",
+    "async": "^2.5.0",
+    "axios": "^0.18.0",
+    "call-me-maybe": "^1.0.1",
+    "es6-promisify": "^6.0.0",
+    "fast-crc32c": "^1.0.4",
+    "firebase-admin": "^6.0.0",
+    "fs-extra": "^7.0.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "needle": "^2.2.4",
+    "object-assign": "^4.1.1",
+    "promisify-node": "^0.5.0",
+    "request-promise": "^4.2.0"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.0.0"
+  }
+}
